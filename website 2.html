@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Govind Ahirwar | Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Hind:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#f5f6fb; --surface:#ffffff; --ink:#1f1d4a; --muted:#5b5a7e; --line:#dcdcee;
+  --saffron:#e8780f; --saffron-ink:#8a3f00; --soft:#fde9d2;
+  --display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --body:'Hind','Segoe UI',system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#14132e;--surface:#1d1c42;--ink:#f1f0ff;--muted:#b4b3d6;--line:#34336a;--saffron:#ff9a3c;--saffron-ink:#ffc48a;--soft:#3a2a22}
+}
+:root[data-theme="dark"]{--bg:#14132e;--surface:#1d1c42;--ink:#f1f0ff;--muted:#b4b3d6;--line:#34336a;--saffron:#ff9a3c;--saffron-ink:#ffc48a;--soft:#3a2a22}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0}
+h2{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;margin-bottom:.5rem}
+section{padding:72px 0}
+.lead{color:var(--muted);max-width:60ch;margin:0 0 32px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{font:800 1.25rem var(--display);text-decoration:none}
+.brand span{color:var(--saffron)}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+nav li a{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;text-decoration:none;font-weight:500;white-space:nowrap;transition:background .15s,color .15s}
+nav li a:hover{background:var(--soft)}
+nav li a.active{background:var(--saffron);color:#1a0d00}
+.menu-btn{display:none;place-items:center;width:44px;height:44px;border-radius:12px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.ic{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* hero */
+.hero{padding:56px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;display:block;color:var(--saffron)}
+.hero p{font-size:1.2rem;color:var(--muted);max-width:44ch;margin:20px 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:12px;font:700 1rem var(--display);text-decoration:none;border:2px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink);transition:transform .15s,box-shadow .15s,background .15s}
+.btn.primary{background:var(--saffron);border-color:var(--saffron);color:#1a0d00;box-shadow:0 4px 0 var(--saffron-ink)}
+.btn:hover{transform:translateY(-2px)}
+.btn:not(.primary):hover{background:var(--soft)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+
+/* reel frame: the memorable element */
+.phone{width:min(100%,290px);margin:0 auto;aspect-ratio:9/16;border:10px solid var(--ink);border-radius:34px;background:#0e0d24;overflow:hidden;position:relative;box-shadow:12px 12px 0 var(--saffron)}
+.phone video,.slot video{width:100%;height:100%;object-fit:cover;display:block;background:#0e0d24}
+.empty{position:absolute;inset:0;display:grid;place-content:center;gap:14px;text-align:center;padding:20px;color:#fff;background:linear-gradient(160deg,#2b2866,#0e0d24)}
+.empty b{font:700 1.1rem var(--display)}
+.empty small{color:#c9c8ea;line-height:1.4}
+.loaded .empty{display:none}
+.pick{display:inline-block;padding:9px 16px;border-radius:999px;background:var(--saffron);color:#1a0d00;font:700 .9rem var(--display);cursor:pointer;border:0}
+input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.pick:has(input:focus-visible){outline:3px solid #fff;outline-offset:3px}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:start}
+.photo{position:relative;width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:6px solid var(--saffron);background:var(--soft)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo label{position:absolute;left:0;right:0;bottom:0;padding:8px;text-align:center;background:rgba(20,19,46,.82);color:#fff;font-size:.85rem;cursor:pointer}
+.about p{max-width:62ch;margin:0 0 1rem}
+.quote{border-left:5px solid var(--saffron);padding:4px 0 4px 18px;margin:24px 0 0;font:700 1.25rem/1.35 var(--display);max-width:34ch}
+
+/* skills */
+.skills{background:var(--surface);border-block:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.skill{border-top:4px solid var(--saffron);padding:16px 0 0}
+.skill h3{font-size:1.25rem;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.skill .ic{width:1.5em;height:1.5em;color:var(--saffron)}
+.skill p{margin:0;color:var(--muted)}
+
+/* reels */
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.slot{aspect-ratio:9/16;border-radius:16px;overflow:hidden;position:relative;background:#0e0d24;border:1px solid var(--line)}
+
+/* contact */
+.contact ul{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.contact li a{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;padding:18px 20px;border:2px solid var(--line);border-radius:14px;background:var(--surface);text-decoration:none;font-weight:500;transition:border-color .15s,transform .15s}
+.contact li a:hover{border-color:var(--saffron);transform:translateY(-2px)}
+.contact li b{display:inline-flex;align-items:center;gap:10px;font-weight:600}
+.contact li b .ic{color:var(--saffron);width:1.4em;height:1.4em}
+.contact li span{color:var(--muted);overflow-wrap:anywhere}
+footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+
+@media (max-width:760px){
+  section{padding:52px 0}
+  .hero .wrap,.about .wrap{grid-template-columns:1fr;gap:36px}
+  .photo{max-width:220px}
+  .menu-btn{display:grid}
+  nav ul{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 20px 14px}
+  nav ul.open{display:flex}
+  nav li a{padding:13px 14px;border-radius:12px}
+}
+@media (min-width:761px) and (max-width:1024px){
+  .hero .wrap{gap:28px}
+  .phone{width:min(100%,250px)}
+  .about .wrap{grid-template-columns:200px 1fr;gap:32px}
+  nav li a{padding:8px 10px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
+<symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v6M8 7.5v.01M12 17v-6M12 13a3 3 0 016 0v4"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></symbol>
+<symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19zM14 7l3 3"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2zM4 19a2 2 0 012-2h13"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><path d="M9 8l-5 4 5 4M15 8l5 4-5 4"/></symbol>
+</defs></svg>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#home">Govind<span>.</span></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Toggle menu"><svg class="ic"><use href="#i-menu"/></svg></button>
+    <ul id="menu">
+      <li><a href="#home"><svg class="ic"><use href="#i-home"/></svg>Home</a></li>
+      <li><a href="#about"><svg class="ic"><use href="#i-user"/></svg>About me</a></li>
+      <li><a href="#skills"><svg class="ic"><use href="#i-bolt"/></svg>Skills</a></li>
+      <li><a href="#reels"><svg class="ic"><use href="#i-play"/></svg>Videos</a></li>
+      <li><a href="#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <h1>Govind Ahirwar<em>Reels that hold attention in three seconds.</em></h1>
+      <p>I make short videos that tell a meaningful story, inspire people, and get shared. I also run RichInd, a learning space with courses and notes.</p>
+      <div class="btns">
+        <a class="btn primary" href="#reels"><svg class="ic"><use href="#i-play"/></svg>Watch my videos</a>
+        <a class="btn" href="#contact"><svg class="ic"><use href="#i-mail"/></svg>Get in touch</a>
+      </div>
+    </div>
+    <div class="phone slotbox" id="heroReel">
+      <video controls playsinline preload="none" aria-label="Featured reel"></video>
+      <div class="empty">
+        <b>Featured reel</b>
+        <small>Pick a video from your device to play it here.</small>
+        <label class="pick">Choose video<input type="file" accept="video/*"></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="photo">
+      <img id="profileImg" alt="Profile photo of Govind Ahirwar" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23fde9d2'/%3E%3Ccircle cx='100' cy='78' r='36' fill='%23e8780f'/%3E%3Cpath d='M30 200c0-44 32-70 70-70s70 26 70 70z' fill='%231f1d4a'/%3E%3C/svg%3E">
+      <label>Change photo<input type="file" accept="image/*" id="photoInput"></label>
+    </div>
+    <div>
+      <h2>About me</h2>
+      <p>I'm Govind, a content creator and the founder of RichInd. My work is built around one idea: a good Reel is short, honest, and leaves the viewer a little better than it found them.</p>
+      <p>Most of my stories are about values: choosing truth when lying seems easier, kindness when the world gets harsh, and humility in service. Devotion, to me, means letting your character and actions speak.</p>
+      <p class="quote">Follow the path of truth. Serve with humility. Live with courage.</p>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <p class="lead">What I bring to a project.</p>
+    <div class="grid">
+      <div class="skill"><h3><svg class="ic"><use href="#i-video"/></svg>Short-form video</h3><p>Reels built around a strong first three seconds and a clear message.</p></div>
+      <div class="skill"><h3><svg class="ic"><use href="#i-pen"/></svg>Storytelling</h3><p>Scripts that turn values and everyday lessons into stories people share.</p></div>
+      <div class="skill"><h3><svg class="ic"><use href="#i-book"/></svg>Teaching content</h3><p>Courses and notes in Chemistry, Maths, Physics, and English through RichInd.</p></div>
+      <div class="skill"><h3><svg class="ic"><use href="#i-code"/></svg>Web basics</h3><p>HTML and CSS for building and maintaining my own sites.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reels">
+  <div class="wrap">
+    <h2>Videos</h2>
+    <p class="lead">Choose a video file on your device for each slot to play it on the page.</p>
+    <div class="slots">
+      <div class="slot slotbox"><video controls playsinline preload="none" aria-label="Reel 1"></video><div class="empty"><b>Reel 1</b><label class="pick">Choose video<input type="file" accept="video/*"></label></div></div>
+      <div class="slot slotbox"><video controls playsinline preload="none" aria-label="Reel 2"></video><div class="empty"><b>Reel 2</b><label class="pick">Choose video<input type="file" accept="video/*"></label></div></div>
+      <div class="slot slotbox"><video controls playsinline preload="none" aria-label="Reel 3"></video><div class="empty"><b>Reel 3</b><label class="pick">Choose video<input type="file" accept="video/*"></label></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="lead">Want a Reel made or have a question? Reach out.</p>
+    <ul>
+      <li><a href="mailto:govindahirwat68@gmail.com"><b><svg class="ic"><use href="#i-mail"/></svg>Email</b><span>govindahirwat68@gmail.com</span></a></li>
+      <li><a href="tel:9770711436"><b><svg class="ic"><use href="#i-phone"/></svg>Phone</b><span>9770711436</span></a></li>
+      <li><a href="https://www.linkedin.com/in/govind-ahirwar" target="_blank" rel="noopener"><b><svg class="ic"><use href="#i-in"/></svg>LinkedIn</b><span>govind-ahirwar</span></a></li>
+      <li><a href="https://www.instagram.com/govind_25x/" target="_blank" rel="noopener"><b><svg class="ic"><use href="#i-ig"/></svg>Instagram</b><span>@govind_25x</span></a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© 2026 Govind Ahirwar | RichInd</div></footer>
+
+<script>
+document.querySelectorAll('.slotbox').forEach(function(box){
+  var input=box.querySelector('input[type=file]'), video=box.querySelector('video');
+  input.addEventListener('change',function(){
+    var f=input.files&&input.files[0];
+    if(!f)return;
+    video.src=URL.createObjectURL(f);
+    box.classList.add('loaded');
+    video.play().catch(function(){});
+  });
+});
+document.getElementById('photoInput').addEventListener('change',function(e){
+  var f=e.target.files&&e.target.files[0];
+  if(f)document.getElementById('profileImg').src=URL.createObjectURL(f);
+});
+var menuBtn=document.getElementById('menuBtn'),menu=document.getElementById('menu');
+function setMenu(o){menu.classList.toggle('open',o);menuBtn.setAttribute('aria-expanded',o);menuBtn.querySelector('use').setAttribute('href',o?'#i-close':'#i-menu')}
+menuBtn.addEventListener('click',function(){setMenu(!menu.classList.contains('open'))});
+var links=[].slice.call(menu.querySelectorAll('a'));
+links.forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('main section[id]').forEach(function(s){io.observe(s)});
+</script>
+</body>
+</html>
